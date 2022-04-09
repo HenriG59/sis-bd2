@@ -21,23 +21,18 @@
 
         $conexao = RetornaConexao();
 
-        $titulo = 'titulo';
-        $autor = 'autor';
-        $classificacao = 'classificacao';
-        $genero = 'genero';
-        $editora = 'editora';
-        
+        $leitor_id = 'leitor_id';
+        $nome = 'nome';
+        $idade = 'idade';
+        $nacionalidade = 'nacionalidade';
         
 
         $sql =
-            'SELECT ' . $titulo .
-            '     , ' . $autor .
-            '     , ' . $classificacao .
-            '     , ' . $genero .
-            '     , ' . $editora .
-            '  FROM livros';
-
-
+            'SELECT ' . $leitor_id .
+            '     , ' . $nome .
+            '     , ' . $idade .
+            '     , ' . $nacionalidade .
+            '  FROM leitor';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -50,11 +45,10 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $titulo . '</th>' .
-            '        <th>' . $autor . '</th>' .
-            '        <th>' . $classificacao . '</th>' .
-            '        <th>' . $genero . '</th>' .
-            '        <th>' . $editora . '</th>' .
+            '        <th>' . $leitor_id . '</th>' .
+            '        <th>' . $nome . '</th>' .
+            '        <th>' . $idade . '</th>' .
+            '        <th>' . $nacionalidade . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -64,11 +58,10 @@
             while ($registro = mysqli_fetch_assoc($resultado)) {
                 echo '<tr>';
 
-                echo '<td>' . $registro[$titulo] . '</td>' .
-                    '<td>' . $registro[$autor] . '</td>' .
-                    '<td>' . $registro[$classificacao] . '</td>'.
-                    '<td>' . $registro[$genero] . '</td>'.
-                    '<td>' . $registro[$editora] . '</td>';
+                echo '<td>' . $registro[$leitor_id] . '</td>' .
+                    '<td>' . $registro[$nome] . '</td>' .
+                    '<td>' . $registro[$idade] . '</td>' .
+                    '<td>' . $registro[$nacionalidade] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';

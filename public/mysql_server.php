@@ -20,4 +20,3 @@ function FecharConexao($conexao)
 {
   mysqli_close($conexao);
 }
-

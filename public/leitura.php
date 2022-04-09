@@ -21,23 +21,18 @@
 
         $conexao = RetornaConexao();
 
+        $inicio_leitura = 'inicio_leitura';
+        $fim_leitura = 'fim_leitura';
+        $leitor_id = 'leitor_id';
         $titulo = 'titulo';
-        $autor = 'autor';
-        $classificacao = 'classificacao';
-        $genero = 'genero';
-        $editora = 'editora';
-        
         
 
         $sql =
-            'SELECT ' . $titulo .
-            '     , ' . $autor .
-            '     , ' . $classificacao .
-            '     , ' . $genero .
-            '     , ' . $editora .
-            '  FROM livros';
-
-
+            'SELECT ' . $inicio_leitura .
+            '     , ' . $fim_leitura .
+            '     , ' . $leitor_id .
+            '     , ' . $titulo .
+            '  FROM leitura';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -50,11 +45,10 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
+            '        <th>' . $inicio_leitura . '</th>' .
+            '        <th>' . $fim_leitura . '</th>' .
+            '        <th>' . $leitor_id . '</th>' .
             '        <th>' . $titulo . '</th>' .
-            '        <th>' . $autor . '</th>' .
-            '        <th>' . $classificacao . '</th>' .
-            '        <th>' . $genero . '</th>' .
-            '        <th>' . $editora . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -62,13 +56,13 @@
         if (mysqli_num_rows($resultado) > 0) {
 
             while ($registro = mysqli_fetch_assoc($resultado)) {
+
                 echo '<tr>';
 
-                echo '<td>' . $registro[$titulo] . '</td>' .
-                    '<td>' . $registro[$autor] . '</td>' .
-                    '<td>' . $registro[$classificacao] . '</td>'.
-                    '<td>' . $registro[$genero] . '</td>'.
-                    '<td>' . $registro[$editora] . '</td>';
+                echo '<td>' . $registro[$inicio_leitura] . '</td>' .
+                    '<td>' . $registro[$fim_leitura] . '</td>' .
+                    '<td>' . $registro[$leitor_id] . '</td>'.
+                    '<td>' . $registro[$titulo] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
