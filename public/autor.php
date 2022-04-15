@@ -21,18 +21,20 @@
 
         $conexao = RetornaConexao();
 
-        $inicio_leitura = 'inicio_leitura';
-        $fim_leitura = 'fim_leitura';
-        $leitor_id = 'leitor_id';
-        $titulo = 'titulo';
+        $autor_id = 'autor_id';
+        $nome = 'nome';
+        $idade = 'idade';
+        $nacionalidade = 'nacionalidade';
+        $livro_id = 'livro_id';
         
 
         $sql =
-            'SELECT ' . $inicio_leitura .
-            '     , ' . $fim_leitura .
-            '     , ' . $leitor_id .
+            'SELECT ' . $autor_id .
+            '     , ' . $nome .
+            '     , ' . $idade .
+            '     , ' . $nacionalidade .
             '     , ' . $livro_id .
-            '  FROM leitura';
+            '  FROM leitor';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -45,9 +47,10 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $inicio_leitura . '</th>' .
-            '        <th>' . $fim_leitura . '</th>' .
-            '        <th>' . $leitor_id . '</th>' .
+            '        <th>' . $autor_id . '</th>' .
+            '        <th>' . $nome . '</th>' .
+            '        <th>' . $idade . '</th>' .
+            '        <th>' . $nacionalidade . '</th>' .
             '        <th>' . $livro_id . '</th>' .
             '    </tr>';
 
@@ -56,12 +59,12 @@
         if (mysqli_num_rows($resultado) > 0) {
 
             while ($registro = mysqli_fetch_assoc($resultado)) {
-
                 echo '<tr>';
 
-                echo '<td>' . $registro[$inicio_leitura] . '</td>' .
-                    '<td>' . $registro[$fim_leitura] . '</td>' .
-                    '<td>' . $registro[$leitor_id] . '</td>'.
+                echo '<td>' . $registro[$autor_id] . '</td>' .
+                    '<td>' . $registro[$nome] . '</td>' .
+                    '<td>' . $registro[$idade] . '</td>' .
+                    '<td>' . $registro[$nacionalidade] . '</td>'.
                     '<td>' . $registro[$livro_id] . '</td>';
                 echo '</tr>';
             }
