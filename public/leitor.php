@@ -28,11 +28,8 @@
         
 
         $sql =
-            'SELECT ' . $leitor_id .
-            '     , ' . $nome .
-            '     , ' . $idade .
-            '     , ' . $nacionalidade .
-            '  FROM leitor';
+            'SELECT nome,idade,nacionalidade
+            FROM leitor;';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -45,7 +42,6 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $leitor_id . '</th>' .
             '        <th>' . $nome . '</th>' .
             '        <th>' . $idade . '</th>' .
             '        <th>' . $nacionalidade . '</th>' .
@@ -58,8 +54,7 @@
             while ($registro = mysqli_fetch_assoc($resultado)) {
                 echo '<tr>';
 
-                echo '<td>' . $registro[$leitor_id] . '</td>' .
-                    '<td>' . $registro[$nome] . '</td>' .
+                echo '<td>' . $registro[$nome] . '</td>' .
                     '<td>' . $registro[$idade] . '</td>' .
                     '<td>' . $registro[$nacionalidade] . '</td>';
                 echo '</tr>';

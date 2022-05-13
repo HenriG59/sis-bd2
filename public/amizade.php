@@ -21,14 +21,17 @@
 
         $conexao = RetornaConexao();
 
-        $leitor_id1 = 'leitor_id1';
-        $leitor_id2 = 'leitor_id2';
+        $leitor_id1 = 'amigo1';
+        $leitor_id2 = 'amigo2';
         
 
         $sql =
-            'SELECT ' . $leitor_id1 .
-            '     , ' . $leitor_id2 .
-            '  FROM amizade';
+            'SELECT l1.nome amigo1 ,l2.nome amigo2
+      FROM amizade AS a
+      JOIN leitor AS l1
+      ON a.leitor_id1 = l1.leitor_id
+      JOIN leitor AS l2
+      ON a.leitor_id2 = l2.leitor_id;';
 
 
 

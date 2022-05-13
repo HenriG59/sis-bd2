@@ -21,18 +21,19 @@
 
         $conexao = RetornaConexao();
 
-        $livro_id = 'livro_id';
-        $titulo = 'titulo';
-        $genero = 'genero';
-        $editora = 'editora';
-        $autor_id = 'autor';
-        
+        $leitor_id = 'nome';
+        $livro_id = 'titulo';
         
 
-        $sql = 'SELECT livros.titulo,livros.genero,livros.editora,autor.nome autor 
-            FROM livros
-            INNER JOIN autor
-            ON livros.autor_id = autor.autor_id;';
+        $sql =
+            'SELECT leitor.nome,
+            livros.titulo
+            FROM biblioteca
+            INNER JOIN leitor
+            ON biblioteca.leitor_id = leitor.leitor_id
+            INNER JOIN livros
+            ON biblioteca.livro_id = livros.livro_id;';
+
 
 
 
@@ -46,10 +47,8 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $titulo . '</th>' .
-            '        <th>' . $genero . '</th>' .
-            '        <th>' . $editora . '</th>' .
-            '        <th>' . $autor_id . '</th>' .
+            '        <th>' . $leitor_id . '</th>' .
+            '        <th>' . $livro_id . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -59,10 +58,8 @@
             while ($registro = mysqli_fetch_assoc($resultado)) {
                 echo '<tr>';
 
-                echo '<td>' . $registro[$titulo] . '</td>' .
-                    '<td>' . $registro[$genero] . '</td>'.
-                    '<td>' . $registro[$editora] . '</td>'.
-                    '<td>' . $registro[$autor_id] . '</td>' ;
+                echo '<td>' . $registro[$leitor_id] . '</td>' .
+                    '<td>' . $registro[$livro_id] . '</td>' ;
                 echo '</tr>';
             }
             echo '</table>';

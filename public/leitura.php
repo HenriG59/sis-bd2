@@ -23,16 +23,17 @@
 
         $inicio_leitura = 'inicio_leitura';
         $fim_leitura = 'fim_leitura';
-        $leitor_id = 'leitor_id';
-        $titulo = 'titulo';
+        $leitor_id = 'nome';
+        $livro_id = 'titulo';
         
 
         $sql =
-            'SELECT ' . $inicio_leitura .
-            '     , ' . $fim_leitura .
-            '     , ' . $leitor_id .
-            '     , ' . $livro_id .
-            '  FROM leitura';
+            'SELECT leitura.inicio_leitura,leitura.fim_leitura,leitor.nome nome,livros.titulo titulo
+            FROM leitura
+            INNER JOIN leitor
+            ON leitura.leitor_id = leitor.leitor_id
+            INNER JOIN livros
+            ON leitura.livro_id = livros.livro_id;';
 
 
         $resultado = mysqli_query($conexao, $sql);

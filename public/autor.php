@@ -25,16 +25,11 @@
         $nome = 'nome';
         $idade = 'idade';
         $nacionalidade = 'nacionalidade';
-        $livro_id = 'livro_id';
         
 
         $sql =
-            'SELECT ' . $autor_id .
-            '     , ' . $nome .
-            '     , ' . $idade .
-            '     , ' . $nacionalidade .
-            '     , ' . $livro_id .
-            '  FROM leitor';
+            'SELECT nome,idade,nacionalidade
+            FROM autor;';
 
 
         $resultado = mysqli_query($conexao, $sql);
@@ -47,11 +42,9 @@
         $cabecalho =
             '<table>' .
             '    <tr>' .
-            '        <th>' . $autor_id . '</th>' .
             '        <th>' . $nome . '</th>' .
             '        <th>' . $idade . '</th>' .
             '        <th>' . $nacionalidade . '</th>' .
-            '        <th>' . $livro_id . '</th>' .
             '    </tr>';
 
         echo $cabecalho;
@@ -61,11 +54,9 @@
             while ($registro = mysqli_fetch_assoc($resultado)) {
                 echo '<tr>';
 
-                echo '<td>' . $registro[$autor_id] . '</td>' .
-                    '<td>' . $registro[$nome] . '</td>' .
+                echo '<td>' . $registro[$nome] . '</td>' .
                     '<td>' . $registro[$idade] . '</td>' .
-                    '<td>' . $registro[$nacionalidade] . '</td>'.
-                    '<td>' . $registro[$livro_id] . '</td>';
+                    '<td>' . $registro[$nacionalidade] . '</td>';
                 echo '</tr>';
             }
             echo '</table>';
