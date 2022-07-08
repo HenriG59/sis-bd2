@@ -1,0 +1,6 @@
+View: mostra quantos amigos determinado leitor tem 
+Função: insere dados na tabela amizade
+Procedure: insere dados na tabela leitor
+Trigger: após um insert de um novo leitor, deixa o seu nome em letras maiúsculas
+Event: insere um leitor novo
+
